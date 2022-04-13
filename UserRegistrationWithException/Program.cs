@@ -27,8 +27,15 @@ namespace UserRegistrationWithException
             Console.WriteLine("\n\nEnter your last name : ");
             string lName = Console.ReadLine(); //storing last name entered by user in variable
             string checkLastName = validation.LastNameValidation(lName); //Calling method to check last name is valid or not with argument
-            if (checkLastName=="Input is valid")//If not valid then ask user to enter last name again
+            if (checkLastName !="Input is valid")//If not valid then ask user to enter last name again
                 goto Lastname;
+            // User Email Validation
+            Email:
+            Console.WriteLine("\n\nEnter your email name : ");
+            string email = Console.ReadLine(); //storing email address entered by user in variable
+            string checkEmail = validation.EmailValidation(email); //Calling method to check email is valid or not with argument
+            if (checkEmail != "Input is valid")//If not valid then ask user to enter email again
+                goto Email;
             Console.ReadLine();
         }
     }
