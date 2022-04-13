@@ -54,7 +54,7 @@ namespace UserRegistrationWithException
                 }
                 if (Regex.IsMatch(lName, pattern)) //If last name entered by user is match with regex then it is valid otherwise not
                 {
-                    Console.WriteLine($"\nYour first name \"{lName}\" is valid");
+                    Console.WriteLine($"\nYour last name \"{lName}\" is valid");
                     return "Input is valid";
                 }
                 else
@@ -82,14 +82,44 @@ namespace UserRegistrationWithException
                 {
                     throw new InvalidException(InvalidException.ExceptionType.EMPTY_INPUT, "Input should not be empty"); //throwing exception when email is empty
                 }
-                if (Regex.IsMatch(email, pattern)) //If name entered by user is match with regex then it is valid otherwise not
+                if (Regex.IsMatch(email, pattern)) //If email entered by user is match with regex then it is valid otherwise not
                 {
-                    Console.WriteLine($"\nYour first name \"{email}\" is valid");
+                    Console.WriteLine($"\nYour email address \"{email}\" is valid");
                     return "Input is valid";
                 }
                 else
                 {
                     throw new InvalidException(InvalidException.ExceptionType.EMPTY_INPUT, "Input is not valid");//throwing exception when email is not valid
+                }
+
+            }
+            catch (InvalidException ex) // If any exception throws then print exception message
+            {
+                Console.WriteLine("\n"+ex.Message);
+                return ex.Message;
+            }
+        }
+        public string MobileNumberValidation(string mobileNumber) // Creating a method for mobile number validation
+        {
+            try
+            {
+                string pattern = "^[9][1][ ][6-9][0-9]{9}$"; // Regex for mobile number validation
+                if (mobileNumber == null)
+                {
+                    throw new InvalidException(InvalidException.ExceptionType.NULL_INPUT, "Input should not be null"); //throwing exception when mobile number is null
+                }
+                if (mobileNumber.Equals(string.Empty))
+                {
+                    throw new InvalidException(InvalidException.ExceptionType.EMPTY_INPUT, "Input should not be empty"); //throwing exception when mobile number is empty
+                }
+                if (Regex.IsMatch(mobileNumber, pattern)) //If mobile number entered by user is match with regex then it is valid otherwise not
+                {
+                    Console.WriteLine($"\nYour email address \"{mobileNumber}\" is valid");
+                    return "Input is valid";
+                }
+                else
+                {
+                    throw new InvalidException(InvalidException.ExceptionType.EMPTY_INPUT, "Input is not valid");//throwing exception when mobile number is not valid
                 }
 
             }
