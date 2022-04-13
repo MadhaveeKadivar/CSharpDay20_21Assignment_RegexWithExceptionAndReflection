@@ -108,12 +108,34 @@ namespace UserRegistrationTesting
         [DataRow("8745fgvhA", "Input is valid")]
         [DataRow("", "Input should not be empty")]
         [DataRow(null, "Input should not be null")]
-        public void GivenPassrordRule1Validation(string password, string expected) // Testing for password rule 1 Validation
+        public void GivenPasswordRule1Validation(string password, string expected) // Testing for password rule 1 Validation
         {
             try
             {
                 //Act
                 string actual = validation.PasswordRule1Validation(password);
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
+            catch (InvalidException ex) // catch exception if input is not valid or null or empty
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        [TestMethod]
+        //Checking for multiple password samples
+        [DataRow("dfghnjvbn", "Input is not valid")]
+        [DataRow("A5sdf@#34", "Input is valid")]
+        [DataRow("FVGdf", "Input is not valid")]
+        [DataRow("wsdfgADFG65@3", "Input is valid")]
+        [DataRow("", "Input should not be empty")]
+        [DataRow(null, "Input should not be null")]      
+        public void GivenPasswordRule2Validation(string password, string expected) // Testing for password rule 2 Validation
+        {
+            try
+            {
+                //Act
+                string actual = validation.PasswordRule2Validation(password);
                 //Assert
                 Assert.AreEqual(expected, actual);
             }

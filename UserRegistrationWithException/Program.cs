@@ -50,7 +50,7 @@ namespace UserRegistrationWithException
             Console.WriteLine("Rule 2 : Atleast one Uppercase letter");
             Console.WriteLine("\n\nEnter your Password : ");
             string password = Console.ReadLine(); //storing password entered by user in variable
-            string checkPassword = validation.PasswordRule1Validation(password); //Calling method to check password follows all the rules or not with argument
+            string checkPassword = validation.PasswordRule2Validation(password); //Calling method to check password follows all the rules or not with argument
             if (checkPassword != "Input is valid")//If not follow then ask user to enter password again
                 goto Password;
             Console.ReadLine();
